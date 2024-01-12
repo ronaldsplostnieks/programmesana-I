@@ -1,3 +1,9 @@
+Patstāvīgi izveidot meklētājam mēneša aprēķinu 
+(cik pilni mēneši ir pagājuši) un dienu aprēķinu 
+(cik pilnas dienas ir pagājušas) kopš pēdējās dzimšanas dienas.
+
+
+
 def dienas_mekletajs (sis_gads, sis_menesis, sis_datums, si_diena, dz_gads, dz_menesis, dz_datums):
     menesu_dienu_skaits = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     
@@ -22,6 +28,10 @@ def dienas_mekletajs (sis_gads, sis_menesis, sis_datums, si_diena, dz_gads, dz_m
     if vai_datums_pagajis(sis_menesis, sis_datums, 2, 29) == False:
         beigu_gads -=1
 
+    # 20.8.2024
+    # 12.10.2020
+
+
 
     for gads in range (sakuma_gads, beigu_gads+1):
         if gads % 4 == 0:
@@ -29,7 +39,13 @@ def dienas_mekletajs (sis_gads, sis_menesis, sis_datums, si_diena, dz_gads, dz_m
         if gads % 100 == 0 and gads % 400 != 0:
             garie_gadi -=1
 
-    pagajusas_dienas += garie_gadi
+    pagajusas_dienas += garie_gadi*366
+    if (sis_menesis - dz_menesi) == 0:
+        months_passed += sis_menesis - dz_menesis
+        if
+
+    
+
 
     # cik pilni mēneši ir pagājuši?
     # cik dienas ir kopā pa tiem mēnešiem?
