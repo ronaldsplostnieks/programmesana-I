@@ -1,0 +1,19 @@
+Ievade - 
+1. šodienas diena (1-7)
+2. Šodienas gads
+3. Šodienas mēnesis (1-12)
+4. Šodienas datums (1-31)
+5. Dzimšanas gadu
+6. Dzimšanas mēnesi (1-12)
+7. Dzimšanas datumu (1-31)
+
+Izvade - 
+Diena (1-7), kurā dzimis
+
+Programmai jāaprēķina:
+1. Cik dienas pagāja
+    1.1. Mēnešiem ir dažāds dienu skaits
+    1.2. Eksistē garie gadi
+2. Atlikums, dalot ar 7
+3. No šodienas dienas atņem to atlikumu
+    3.1. Nevar būt negatīva diena
