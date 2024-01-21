@@ -92,11 +92,6 @@ def vai_datums_pagajis(tagad_menesis, tagad_datums, salidzinamais_menesis, salid
 def datu_parbaude(gads_dz, menesis_dz, datums_dz, gads_sis, menesis_sis, datums_sis, diena_sis):
     pareizi_dati = True
 
-    # array = [gads_dz, menesis_dz, datums_dz, gads_sis, menesis_sis, datums_sis, diena_sis]
-
-    # for i in array:
-    #     if array[i]
-
     if gads_dz > gads_sis:
         pareizi_dati = False
     elif gads_dz == gads_sis and menesis_dz > menesis_sis:
