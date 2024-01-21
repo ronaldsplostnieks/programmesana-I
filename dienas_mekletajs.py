@@ -1,13 +1,8 @@
-# KM - pabeigt testa plānu dzimšanas dienas meklētājam 
 # (ievade, sagaidāmais rezultāts, iegūtais rezultāts). 
 # Izplānot visus iespējamos idejiski dažādos cilvēka kļūdainos ievades datus, 
 # nodrošināties, ka kļūdainus nevar ievadīt. 
 # (Vai nu mainīt datu pārbaudes funkciju, vai pamainīt programmu, lai pieņem dažādus datus.) 
 # Pievienot saiti uz savu Github projektu, kur šis ir izdarīts. Pievienot arī testa plānu.
-
-# strings, nevis cipari
-# dzimsanas datums vel nav pienacis
-# dienas vai mensi ievaditi parak lieli
 
 menesu_dienu_skaits = [31, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 def dienas_mekletajs (sis_gads, sis_menesis, sis_datums, si_diena, dz_gads, dz_menesis, dz_datums):
@@ -56,9 +51,7 @@ def dienas_mekletajs (sis_gads, sis_menesis, sis_datums, si_diena, dz_gads, dz_m
 
     menesis = dz_menesis
     while menesis != sis_menesis:
-        print("Šis:", sis_menesis)
         dienas_menesos += menesu_dienu_skaits[menesis]
-        print("skaititajs:", menesis)
         menesis +=1
         if menesis == 13:
             menesis=1
@@ -96,7 +89,7 @@ def vai_datums_pagajis(tagad_menesis, tagad_datums, salidzinamais_menesis, salid
         return True
     return False
     
-def datu_parbaude (gads_dz, menesis_dz, datums_dz, gads_sis, menesis_sis, datums_sis, diena_sis):
+def datu_parbaude(gads_dz, menesis_dz, datums_dz, gads_sis, menesis_sis, datums_sis, diena_sis):
     pareizi_dati = True
 
     # array = [gads_dz, menesis_dz, datums_dz, gads_sis, menesis_sis, datums_sis, diena_sis]
@@ -116,16 +109,23 @@ def datu_parbaude (gads_dz, menesis_dz, datums_dz, gads_sis, menesis_sis, datums
 
     if gads_dz<=0 or menesis_dz<=0 or datums_dz<=0 or gads_sis<=0 or menesis_sis<=0 or datums_sis<=0 or diena_sis<=0:
         pareizi_dati = False
-    
-    #Visas citas datu pārbaudes
 
-    if pareizi_dati == False:
+    if menesis_dz > 12 or menesis_sis > 12:
+        pareizi_dati = False
+    else:
+        if (gads_dz % 4) == 0 or (gads_sis % 4) == 0: # prieks gara gada februara pārbaude
+            if gads_dz == 2 or gads_dz == 2:
+                if datums_dz > (menesu_dienu_skaits[menesis_dz]+1) or menesis_sis > (menesu_dienu_skaits[menesis_sis]+1):
+                    pareizi_dati = False
+        if datums_dz > menesu_dienu_skaits[menesis_dz] or menesis_sis > menesu_dienu_skaits[menesis_sis]:
+            pareizi_dati = False
+        
+
+    if not pareizi_dati:
         print("Nepareizi ievades dati!")
     return pareizi_dati
 
-def check_correct(dz_m,dz_d, sis_m, sis_d):
-    if 
-    print("test")
+    
 
 
 atbilde = "y"
@@ -135,19 +135,25 @@ while atbilde == "y":
     sis_n = int(input("Lūdzu ievadiet pašreizējo nedēļas dienu!:"))
 
     flag = False
+    date_amount = False
 
-    for i in range(len(dz_date)):
-        try:
-            int(dz_date[i])
-            int(sis_date[i])
-            int(sis_n)
-        except ValueError:
-            flag = True
-          
+    if len(dz_date) != 3 or len(sis_date) != 3:
+        date_amount = True
 
-    if not flag:
-        print(int(dz_date[0]), int(dz_date[1]), int(dz_date[2]), int(sis_date[0]), int(sis_date[1]), int(sis_date[2]), sis_n)
+    if not date_amount:
+        for i in range(len(dz_date)):
+            try:
+                int(dz_date[i])
+                int(sis_date[i])
+                int(sis_n)
+            except ValueError:
+                flag = True
+            
+
+
+    if not flag and not date_amount:
         if datu_parbaude(int(dz_date[0]), int(dz_date[1]), int(dz_date[2]), int(sis_date[0]), int(sis_date[1]), int(sis_date[2]), sis_n):
+
             print(dienas_mekletajs(int(sis_date[0]), int(sis_date[1]), int(sis_date[2]), sis_n, int(dz_date[0]), int(dz_date[1]), int(dz_date[2])))
     else:
         print("Nepareizi ievades dati!")
@@ -155,5 +161,5 @@ while atbilde == "y":
 
 # nevar ievadit datumu kas nav + plans jauztaisa
 # nevar ievadit stringu, nelaiž talak
-
-# dienas vai mensi ievaditi parak lieli
+# nevar ievadit dienas un menesus parāk lielus. Ari garajos gados
+# ja neievada gadu normalu liek velreiz ievadit
