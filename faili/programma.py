@@ -56,10 +56,6 @@ for cilveks in visi:
     vecums.append(vecums1)
     dzimums.append(info[4])
 
-print(vardi)
-print(uzvardi)
-print(vecums)
-print(dzimums)
 sutit_vestules(vardi, uzvardi, vecums, dzimums)
 
 
